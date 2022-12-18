@@ -3,19 +3,35 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "antd": "^5.0.7",
+    "axios": "^1.2.1",
+    "circular-dependency-plugin": "^5.2.2",
+    "classnames": "^2.3.2",
+    "cloudinary-react": "^1.8.1",
+    "formik": "^2.2.9",
+    "js-cookie": "^3.0.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.1.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.0"
+    "redux-devtools-extension": "^2.13.9",
+    "sass": "^1.56.2",
+    "sweetalert2": "^11.6.15",
+    "web-vitals": "^2.1.0",
+    "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +50,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^4.1.0",
+    "customize-cra": "^1.0.0",
+    "react-app-rewired": "^2.2.1"
   }
 }
