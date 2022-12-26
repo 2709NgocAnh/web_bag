@@ -1,6 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import httpRequest from "~/httpRequest/httpRequest";
+
 export const signUpRegister = async ({
   fullName,
   email,
@@ -21,12 +22,10 @@ export const signUpRegister = async ({
     });
     return res.data;
   } catch (error) {
-    // console.log(error.response.data.details[0].message);
+    console.log(error.response);
     Swal.fire({
       icon: "error",
-    //   text: `${error.response.data.details[0].message} 🙌👀`,
-      text: `🙌👀`,
-
+      text: `${error.response.data.message} 🙌👀`,
     });
   }
 };

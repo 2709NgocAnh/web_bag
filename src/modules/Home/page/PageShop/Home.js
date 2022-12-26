@@ -7,7 +7,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-  const listproduct = useSelector((state) => state.Product.productList);
+  const listproduct = useSelector((state) => state.product.productList);
 
   return <div>hellllo</div>;
 }

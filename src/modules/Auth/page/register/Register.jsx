@@ -10,7 +10,7 @@ import styles from "./Register.module.scss";
 
 const cx = classNames.bind(styles);
 
-const Register = () => {
+export default function Register() {
   const dispatch = useDispatch();
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -26,9 +26,8 @@ const Register = () => {
       password_confirm: "",
     },
     onSubmit: async (values, actions) => {
-    //   console.log(values);
-      dispatch(signUpRegister(values));
-    //   actions.resetForm();
+      await dispatch(signUpRegister(values));
+      actions.resetForm();
     },
     validationSchema: Yup.object({
       fullName: Yup.string()
@@ -86,5 +85,4 @@ const Register = () => {
       </form>
     </div>
   );
-};
-export default Register;
+}

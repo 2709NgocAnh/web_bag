@@ -1,33 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames/bind";
-import { DataContext } from "~/customer/components/dataProvider/DataProvider";
-import styles from "./Action.module.scss";
-import * as registerService from "~/admin/services/registerService";
-import Image from "~/components/image/Image";
-import MenuList from "../menuList/MenuList";
-import { MENU_ITEMS, USER_MENU } from "~/constant/Menu";
-import { NavLink } from "react-router-dom";
-import AvatarUser from "../avatarUser/AvatarUser";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import images from "~/assets/images";
-import Cookies from "js-cookie";
+import classNames from "classnames/bind";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { MENU_ITEMS, USER_MENU } from "~/components/constant/Menu";
+import Image from "~/components/image/Image";
+import images from "~/ultil/images";
+import styles from "./Action.module.scss";
+import AvatarUser from "./component/avatarUser/AvatarUser";
+import MenuList from "./component/menuList/MenuList";
 function Action() {
   const cx = classNames.bind(styles);
   const [auth, setAuth] = useState([]);
   const [currentUser, setCurrentUser] = useState(false);
-  const value = useContext(DataContext);
-  const [cart] = value.cart;
-
-  const fetchApi = async () => {
-    const response = await registerService.getRegister()
-    setAuth(response.account.fullName);
-    setCurrentUser(true);
-  };
-  //call API
-  useEffect(() => {
-    Cookies.get("accessToken")&&fetchApi()
-  }, []);
 
   return (
     <div>
@@ -52,7 +36,7 @@ function Action() {
           <NavLink to="/cart">
             <ShoppingCartOutlined />
           </NavLink>
-          <span className={cx("Cart--quantity")}>{cart.length}</span>
+          <span className={cx("Cart--quantity")}>1</span>
         </div>
       </div>
     </div>
