@@ -1,4 +1,7 @@
 .wrapper {
+  grid-area: header;
+  height: var(--default-layout-header-height);
+
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 1fr;
   grid-template-areas: "logo menu search action";

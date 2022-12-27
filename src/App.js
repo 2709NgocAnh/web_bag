@@ -1,17 +1,29 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Header from "./layouts/header/Header";
-import Register from "./modules/Auth/page/register/Register";
-import Home from "./modules/Home/page/PageShop/Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import DefaultLayout from "./layouts/defaultLayout";
+import PUBLICROUTES from "./routes/publicRoutes";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        {PUBLICROUTES.map((route, index) => {
+          const Page = route.component;
+          return (
+            <>
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <DefaultLayout>
+                    <Page />
+                  </DefaultLayout>
+                }
+              />
+            </>
+          );
+        })}
+      </Routes>
+    </Router>
   );
 }
 

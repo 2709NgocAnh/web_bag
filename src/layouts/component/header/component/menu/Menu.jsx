@@ -1,6 +1,4 @@
 import classNames from "classnames/bind";
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
 import { MENU_HEADER } from "~/components/constant/Menu";
 import Category from "./component/category/Category";
 import MenuItem from "./component/menuItem/MenuItem";
@@ -34,9 +32,5 @@ function Menu() {
     </div>
   );
 }
-
-Menu.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Menu;
