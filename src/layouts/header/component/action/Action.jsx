@@ -14,30 +14,28 @@ function Action() {
   const [currentUser, setCurrentUser] = useState(false);
 
   return (
-    <div>
-      <div className={cx("action")}>
-        <div className={cx("dropdown")}>
-          <button style={{ backgroundColor: "transparent" }}>
-            {currentUser ? (
-              <AvatarUser Auth={auth} />
-            ) : (
-              <Image
-                className={cx("user-avatar")}
-                src={images.noImage}
-                alt="Nguyen Van A"
-              />
-            )}
-            <div className={cx("dropdown-content--right")}>
-              <MenuList items={currentUser ? USER_MENU : MENU_ITEMS} />
-            </div>
-          </button>
-        </div>
-        <div className={cx("Cart")}>
-          <NavLink to="/cart">
-            <ShoppingCartOutlined />
-          </NavLink>
-          <span className={cx("Cart--quantity")}>1</span>
-        </div>
+    <div className={cx("action")}>
+      <div className={cx("dropdown")}>
+        <button style={{ backgroundColor: "transparent" }}>
+          {currentUser ? (
+            <AvatarUser Auth={auth} />
+          ) : (
+            <Image
+              className={cx("user-avatar")}
+              src={images.noImage}
+              alt="Nguyen Van A"
+            />
+          )}
+          <div className={cx("dropdown-content")}>
+            <MenuList items={currentUser ? USER_MENU : MENU_ITEMS} />
+          </div>
+        </button>
+      </div>
+      <div className={cx("Cart")}>
+        <NavLink to="/cart">
+          <ShoppingCartOutlined />
+        </NavLink>
+        <span className={cx("Cart--quantity")}>1</span>
       </div>
     </div>
   );

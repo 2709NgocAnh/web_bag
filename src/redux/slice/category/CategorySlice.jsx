@@ -5,7 +5,7 @@ export const getCategory = createAsyncThunk(
   async () => {
     try {
       const response = await categoryService.getListCategory();
-      return response.categotys;
+      return response.categories;
     } catch (e) {
       console.log(e);
     }

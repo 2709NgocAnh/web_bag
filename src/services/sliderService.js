@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
-import * as httpRequest from "~/admin/utils/httpRequest";
+import httpRequest from "~/httpRequest/httpRequest";
 
-export const getSlider = async () => {
+export const getListSlider = async () => {
   try {
     const res = await httpRequest.get(`slider/`);
-    return res;
+    return res.data;
   } catch (error) {
     console.log(error);
   }

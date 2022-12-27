@@ -1,9 +1,4 @@
-import {
-  UserOutlined,
-  EyeTwoTone,
-  LockOutlined,
-  MailOutlined,
-} from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 const MENU_ITEMS = [
   {
     icon: <UserOutlined />,

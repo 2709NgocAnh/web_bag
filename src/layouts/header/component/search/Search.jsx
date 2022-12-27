@@ -4,23 +4,22 @@ import styles from "./SearchProduct.module.scss";
 const cx = classNames.bind(styles);
 
 function Search(props) {
-  const { setValueSearch, valueSearch,handleSubmit} = props;
+  const { setValueSearch, valueSearch, handleSubmit } = props;
 
   return (
-    <div>
-      <form  onSubmit={handleSubmit} >
-      <div className={cx("search")}>
-        <input
-          type="text"
-          placeholder="Tim kiem..."
-          className={cx("search")}
-          onChange={(e) => setValueSearch(e.target.value)}
-          value={valueSearch}
-        />
-        <button className={cx("search-btn")} type="submit">
-          <SearchOutlined />
-        </button>
-      </div>
+    <div className={cx("search")}>
+      <form onSubmit={handleSubmit}>
+        <div className={cx("search-box")}>
+          <input
+            type="text"
+            placeholder="Tìm kiếm sản phẩm..."
+            onChange={(e) => setValueSearch(e.target.value)}
+            value={valueSearch}
+          />
+          <button className={cx("search-btn")} type="submit">
+            <SearchOutlined />
+          </button>
+        </div>
       </form>
     </div>
   );
