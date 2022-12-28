@@ -19,19 +19,20 @@ const FormRegister = (props) => {
 
   return (
     <>
-      <div className={cx("form-group")}>
-        <div className={cx("form-group--icon")}>{icon}</div>
-        {/* <label htmlFor={name}>{label} *</label> */}
+      <div className={cx("formGroup")}>
+        <div className={cx("formGroup__icon")}>{icon}</div>
         <input
           type={type}
           id={name}
           onChange={onChange}
           value={value}
-          className={cx("form-input")}
+          className={cx("formGroup__input")}
           placeholder={label}
         />
       </div>
-        {touched && errors && <span className={cx("form-group--err")}>{errorMessage}</span>}
+      {touched && errors && (
+        <span className={cx("formGroup__err")}>{errorMessage}</span>
+      )}
     </>
   );
 };

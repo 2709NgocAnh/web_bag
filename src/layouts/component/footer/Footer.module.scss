@@ -13,6 +13,7 @@
     grid-template-areas: "content empty";
 
     background-color: rgba(193, 186, 186, 0.853);
+    padding: 0 20px;
 
     .header--content {
       grid-area: content;
@@ -75,7 +76,7 @@
       height: 80px;
 
       .header--content {
-        grid-template-columns: 1fr 4fr 5fr;
+        grid-template-columns: 1fr 6fr 5fr;
         column-gap: 5px;
         align-items: center;
         padding: 0px;

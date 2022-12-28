@@ -3,31 +3,31 @@ const MENU_ITEMS = [
   {
     icon: <UserOutlined />,
     title: "Đăng Ký",
-    to: "/register",
+    to: "/user/register",
   },
   {
     icon: <UserOutlined />,
     title: "Đăng nhập",
-    to: "/sign-in",
+    to: "/user/login",
   },
 ];
 const USER_MENU = [
   {
     icon: <UserOutlined />,
     title: "View profile",
-    to: "/profile",
+    to: "/account/info",
   },
   {
     icon: <UserOutlined />,
     title: "Log out",
-    to: "/sign-in",
+    to: "/user/login",
     separate: true,
   },
 ];
 const MENU_HEADER = [
   {
     title: "SHOP",
-    to: "/shop",
+    to: "/product/shop",
     dropdown: true,
   },
   {

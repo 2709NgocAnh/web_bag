@@ -1,9 +1,9 @@
-import * as httpRequest from "~/admin/utils/httpRequest";
+import httpRequest from "~/httpRequest/httpRequest";
 
 export const getDiscount = async () => {
   try {
-    const res = await httpRequest.get(`discount/`);
-    return res;
+    const res = await httpRequest.get(`discount/homeDiscountList`);
+    return res.data;
   } catch (error) {
     console.log(error);
   }
@@ -40,21 +40,27 @@ export const newDiscount = async (
     console.log(error);
   }
 };
-export const editDiscount = async (id, code,
+export const editDiscount = async (
+  id,
+  code,
   discount,
   minium_order,
   purchase_limit,
   expiration_date,
   content,
-  active) => {
+  active
+) => {
   try {
-    const res = await httpRequest.post(`discount/update`, { id,  code,
+    const res = await httpRequest.post(`discount/update`, {
+      id,
+      code,
       discount,
       minium_order,
       purchase_limit,
       expiration_date,
       content,
-      active });
+      active,
+    });
     return res;
   } catch (error) {
     console.log(error);
@@ -69,10 +75,10 @@ export const getADiscount = async (id) => {
   }
 };
 export const getDiscountByCode = async (code) => {
-    try {
-      const res = await httpRequest.get(`discount/getDiscountByCode/${code}`);
-      return res;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  try {
+    const res = await httpRequest.get(`discount/getDiscountByCode/${code}`);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};

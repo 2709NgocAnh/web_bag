@@ -1,6 +1,7 @@
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import classNames from "classnames/bind";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { MENU_ITEMS, USER_MENU } from "~/components/constant/Menu";
 import Image from "~/components/image/Image";
@@ -10,32 +11,35 @@ import AvatarUser from "./component/avatarUser/AvatarUser";
 import MenuList from "./component/menuList/MenuList";
 function Action() {
   const cx = classNames.bind(styles);
-  const [auth, setAuth] = useState([]);
+  const [auth, setAuth] = useState("Anh");
   const [currentUser, setCurrentUser] = useState(false);
+  const cartQuantity = useSelector((state) => state.cart.listCart.length);
 
   return (
     <div className={cx("action")}>
-      <div className={cx("dropdown")}>
-        <button style={{ backgroundColor: "transparent" }}>
+      <div className={cx("action__dropdown")}>
+        <button>
           {currentUser ? (
             <AvatarUser Auth={auth} />
           ) : (
             <Image
-              className={cx("user-avatar")}
+              className={cx("action__dropdown--avatar")}
               src={images.noImage}
               alt="Nguyen Van A"
             />
           )}
-          <div className={cx("dropdown-content")}>
+
+          <div className={cx("action__dropdown--content")}>
             <MenuList items={currentUser ? USER_MENU : MENU_ITEMS} />
           </div>
         </button>
       </div>
-      <div className={cx("Cart")}>
+
+      <div className={cx("action__cart")}>
         <NavLink to="/cart">
           <ShoppingCartOutlined />
         </NavLink>
-        <span className={cx("Cart--quantity")}>1</span>
+        <span className={cx("action__cart--quantity")}>{cartQuantity}</span>
       </div>
     </div>
   );

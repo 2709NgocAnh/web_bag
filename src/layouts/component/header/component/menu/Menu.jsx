@@ -8,25 +8,19 @@ const cx = classNames.bind(styles);
 
 function Menu() {
   return (
-    <div className={cx("menu__link")}>
+    <div className={cx("menu")}>
       {MENU_HEADER.map((item, index) => {
         if (item.dropdown === true) {
           return (
-            <li key={index}>
-              <div className={cx("dropdown")}>
-                <MenuItem title={item.title} to={item.to} />
-                <div className={cx("dropdown__content")}>
-                  <Category />
-                </div>
+            <div className={cx("menu__dropdown")} key={index}>
+              <MenuItem title={item.title} to={item.to} key={index} />
+              <div className={cx("menu__dropdown--content")}>
+                <Category />
               </div>
-            </li>
+            </div>
           );
         } else {
-          return (
-            <li key={index}>
-              <MenuItem title={item.title} to={item.to} />
-            </li>
-          );
+          return <MenuItem title={item.title} to={item.to} key={index} />;
         }
       })}
     </div>

@@ -2,16 +2,25 @@ import classNames from "classnames/bind";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 // import "yup-phone-lite";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUpRegister } from "~/redux/slice/auth/AuthSlice";
 import { MENU_REGISTER } from "../../component/constant";
 import FormRegister from "../../component/FormRegister/FormRegister";
 import styles from "./Register.module.scss";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 export default function Register() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isSuccess = useSelector((state) => state.auth.isSuccess);
+  //   console.log(isSuccess);
+  //   if (isSuccess === true) {
+  //     Swal.fire("Vui lòng Kiểm tra email để lấy mã xác nhận");
+  //     navigate("/veryfyEmail");
+  //   }
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -27,7 +36,8 @@ export default function Register() {
     },
     onSubmit: async (values, actions) => {
       await dispatch(signUpRegister(values));
-      actions.resetForm();
+
+      //   actions.resetForm();
     },
     validationSchema: Yup.object({
       fullName: Yup.string()
@@ -54,35 +64,32 @@ export default function Register() {
   });
 
   return (
-    <div className={cx("container")}>
-      {/* <Header search={search} onChange={(e) => setSearch(e.target.value)} /> */}
-      <form className={cx("form-Register")} onSubmit={formik.handleSubmit}>
-        <h3 className={cx("form-heading")}>ĐĂNG KÝ THÀNH VIÊN MỚI </h3>
-        {MENU_REGISTER.map((input) => (
-          <FormRegister
-            key={input.id}
-            {...input}
-            onChange={formik.handleChange}
-            value={formik.values[input.name]}
-            errors={formik.errors[input.name]}
-            touched={formik.touched[input.name]}
-          />
-        ))}
-        <div className={cx("form-group")}>
-          <button type="submit" className={cx("form-submit")}>
-            Đăng ký
-          </button>
-        </div>
-        <div className={cx("form-signin")}>
-          <span>Bạn đã có tài khoản !</span>
-          {/* <NavLink
+    <form className={cx("formRegister")} onSubmit={formik.handleSubmit}>
+      <h3 className={cx("formRegister__heading")}>ĐĂNG KÝ THÀNH VIÊN MỚI </h3>
+      {MENU_REGISTER.map((input) => (
+        <FormRegister
+          key={input.id}
+          {...input}
+          onChange={formik.handleChange}
+          value={formik.values[input.name]}
+          errors={formik.errors[input.name]}
+          touched={formik.touched[input.name]}
+        />
+      ))}
+      <div className={cx("formRegister__bottom")}>
+        <button type="submit" className={cx("formRegister__bottom--btn")}>
+          Đăng ký
+        </button>
+        <span className={cx("formRegister__bottom--title")}>
+          Bạn đã có tài khoản !
+        </span>
+        {/* <NavLink
             to="/sign-in"
             style={{ color: "blue", textDecoration: "underline" }}
           >
             Đăng nhập
           </NavLink> */}
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

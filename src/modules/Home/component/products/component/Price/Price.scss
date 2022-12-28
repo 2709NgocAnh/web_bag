@@ -1,0 +1,20 @@
+.price {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  &__noSale {
+    display: block;
+    font-size: 2rem;
+    padding-left: 0;
+    margin-left: 0;
+    color: red;
+  }
+  &__sale {
+    display: block;
+    font-size: 1.4rem;
+    padding-left: 0;
+    margin-left: 0;
+    color: darkgrey;
+  }
+}

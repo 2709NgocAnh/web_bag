@@ -1,14 +1,14 @@
-.form-group {
-    width: 600px;
-    font-size: 1.6rem;
-    border: 1px solid white;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    height: 40px;
-    border: 1px solid rgb(202, 197, 197);
-    display: flex;
-  }
-  .form-group--icon {
+.formGroup {
+  width: 600px;
+  font-size: 1.6rem;
+  border: 1px solid white;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  height: 40px;
+  border: 1px solid rgb(202, 197, 197);
+  display: flex;
+
+  &__icon {
     display: flex;
     padding: 5px;
     align-items: center;
@@ -25,48 +25,40 @@
       }
     }
   }
-  .form-group--err{
-      display: flex;
-      align-items: center;
-      padding-right: 10px;
-      width: 600px;
-    }
-  .form-group label {
-    font-size: 1.6rem;
-    padding: 10px;
-    width: 150px;
+
+  &__err {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    width: 600px;
+    color: red;
+    font-size: 1.4rem;
   }
-  .form-input {
+
+  &__input {
+    position: relative;
     height: 100%;
     padding: 0 10px;
     background-color: white;
     outline: none;
     flex-grow: 5;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 20px;
+
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      color: red;
+    }
+    &::placeholder {
+      font-size: 1.4rem;
+      border: none;
+      background-color: white;
+      color: #272424;
+    }
   }
-  .form-input::placeholder {
-    font-size: 1.4rem;
-    border: none;
-    background-color: white;
-    color: #272424;
-  }
-  
-  label {
-    font-size: 1.6rem;
-    color: gray;
-  }
-  
-  span {
-    font-size: 1.2rem;
-    color: rgba(255, 0, 0, 0.736);
-  }
-  
-  .valid {
-    color: limegreen;
-    margin-left: 0.25rem;
-  }
-  
-  .invalid {
-    color: red;
-    margin-left: 0.25rem;
-  }
-  
+}

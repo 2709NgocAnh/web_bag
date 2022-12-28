@@ -9,14 +9,14 @@ function Search(props) {
   return (
     <div className={cx("search")}>
       <form onSubmit={handleSubmit}>
-        <div className={cx("search-box")}>
+        <div className={cx("search__box")}>
           <input
             type="text"
             placeholder="Tìm kiếm sản phẩm..."
             onChange={(e) => setValueSearch(e.target.value)}
             value={valueSearch}
           />
-          <button className={cx("search-btn")} type="submit">
+          <button type="submit">
             <SearchOutlined />
           </button>
         </div>

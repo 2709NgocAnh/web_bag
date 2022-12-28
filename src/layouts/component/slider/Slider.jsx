@@ -10,7 +10,11 @@ function Slider(props) {
 
   return (
     <>
-      <div id="carouselExampleControls" className={cx("carousel")}>
+      <div
+        id="carouselExampleControls"
+        className={cx("carousel slide")}
+        data-bs-ride="carousel"
+      >
         <div className={cx("carousel-inner")}>
           {slideList?.map((slider, index) => {
             return (
@@ -23,7 +27,7 @@ function Slider(props) {
                 <Image
                   width="1620px"
                   height="500px"
-                  className={cx("d-block w-100")}
+                  className={cx("d-block", "w-100")}
                   cloudName={process.env.REACT_APP_CLOUDINARY_NAME}
                   publicId={slider.image}
                 />
@@ -32,7 +36,7 @@ function Slider(props) {
           })}
 
           <button
-            className={cx("carousel-control-prev btn1")}
+            className={cx("carousel-control-prev")}
             type="button"
             data-bs-target="#carouselExampleControls"
             data-bs-slide="prev"
@@ -45,7 +49,7 @@ function Slider(props) {
             <span className={cx("visually-hidden")}>Previous</span>
           </button>
           <button
-            className={cx("carousel-control-next btn1")}
+            className={cx("carousel-control-next")}
             type="button"
             data-bs-target="#carouselExampleControls"
             data-bs-slide="next"

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getCategory } from "~/redux/slice/category/CategorySlice";
+import { getDiscounts } from "~/redux/slice/discount/DiscountSlice";
 import { getProducts } from "~/redux/slice/product/ProductSlice";
 import { getSlider } from "~/redux/slice/slider/SliderSlice";
 
@@ -15,6 +16,7 @@ export default function Home() {
     dispatch(getProducts());
     dispatch(getSlider());
     dispatch(getCategory());
+    dispatch(getDiscounts());
   }, [dispatch]);
   const listProduct = useSelector((state) => state.product.productList);
 

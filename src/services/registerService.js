@@ -29,7 +29,7 @@ export const signUpRegister = async ({
     });
   }
 };
-export const signInRegister = async (email, password) => {
+export const signInRegister = async ({ email, password }) => {
   try {
     const res = await axios
       .create({

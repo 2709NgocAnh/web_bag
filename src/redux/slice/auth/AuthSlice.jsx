@@ -1,11 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Navigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import * as registerService from "../../../services/registerService";
 export const signUpRegister = createAsyncThunk(
   "user/signUpRegister",
   async (user) => {
     try {
-      console.log(user);
       const response = await registerService.signUpRegister(user);
+      return response.success;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+);
+export const signInRegister = createAsyncThunk(
+  "user/userLogin",
+  async (user) => {
+    try {
+      const response = await registerService.signInRegister(user);
       return response.success;
     } catch (e) {
       console.log(e);
@@ -18,7 +30,7 @@ const authSlice = createSlice({
     user: "",
     token: "",
     err: "",
-    isSucess: false,
+    isSusses: false,
     isLoading: false,
   },
   extraReducers: {
@@ -27,40 +39,16 @@ const authSlice = createSlice({
     },
     [signUpRegister.fulfilled]: (state, action) => {
       state.isLoading = true;
-      state.isSucess = action.payload;
+      state.isSuccess = action.payload;
     },
     [signInRegister.pending]: (state) => {
       state.isLoading = false;
     },
     [signInRegister.fulfilled]: (state, action) => {
       state.isLoading = true;
-      state.isSucess = action.payload;
+      state.isSuccess = action.payload;
     },
   },
 });
 
 export default authSlice.reducer;
-
-// export function signUpRegister() {
-//   createAsyncThunk("user/signUpRegister", async (user) => {
-//     try {
-//       console.log(user);
-
-//       const response = await registerService.signUpRegister(user);
-//       return response.success;
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   });
-// }
-
-export function signInRegister(email, password) {
-  createAsyncThunk("user/userLogin", async () => {
-    try {
-      const response = await registerService.signInRegister(email, password);
-      return response.success;
-    } catch (e) {
-      console.log(e);
-    }
-  });
-}
