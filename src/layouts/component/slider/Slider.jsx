@@ -1,70 +1,32 @@
-import classNames from "classnames/bind";
 import { Image } from "cloudinary-react";
 import { useSelector } from "react-redux";
-import styles from "./Slider.module.scss";
+import Slider from "react-slick";
+import "./Slider.scss";
 
-function Slider(props) {
-  const cx = classNames.bind(styles);
-  //call API
+function Slide(props) {
   const slideList = useSelector((state) => state.slider.sliderList);
-
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
-    <>
-      <div
-        id="carouselExampleControls"
-        className={cx("carousel slide")}
-        data-bs-ride="carousel"
-      >
-        <div className={cx("carousel-inner")}>
-          {slideList?.map((slider, index) => {
-            return (
-              <div
-                className={cx(
-                  index === 1 ? "carousel-item active" : "carousel-item"
-                )}
-                key={slider._id}
-              >
-                <Image
-                  width="1620px"
-                  height="500px"
-                  className={cx("d-block", "w-100")}
-                  cloudName={process.env.REACT_APP_CLOUDINARY_NAME}
-                  publicId={slider.image}
-                />
-              </div>
-            );
-          })}
-
-          <button
-            className={cx("carousel-control-prev")}
-            type="button"
-            data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev"
-            style={{ width: "auto", paddingLeft: 25 }}
-          >
-            <span
-              className={cx("carousel-control-prev-icon")}
-              aria-hidden="true"
+    <div className="slider-container">
+      <Slider {...settings}>
+        {slideList?.map((slider, index) => {
+          return (
+            <Image
+              key={index}
+              height="500px"
+              cloudName={process.env.REACT_APP_CLOUDINARY_NAME}
+              publicId={slider.image}
             />
-            <span className={cx("visually-hidden")}>Previous</span>
-          </button>
-          <button
-            className={cx("carousel-control-next")}
-            type="button"
-            data-bs-target="#carouselExampleControls"
-            data-bs-slide="next"
-            style={{ width: "auto", paddingRight: 35 }}
-          >
-            <span
-              className={cx("carousel-control-next-icon")}
-              aria-hidden="true"
-            />
-            <span className={cx("visually-hidden")}>Next</span>
-          </button>
-          <div className={cx("title")}>{props.title}</div>
-        </div>
-      </div>
-    </>
+          );
+        })}
+      </Slider>
+    </div>
   );
 }
-export default Slider;
+export default Slide;

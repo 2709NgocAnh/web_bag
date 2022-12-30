@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 function Discount() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const listDiscount = useSelector((state) => state.discount.discountList);
+
   const copyText = (code) => {
     return navigator.clipboard.writeText(`${code}`);
   };
@@ -13,7 +14,7 @@ function Discount() {
     <div className="coupon">
       {listDiscount?.map((discount, index) => {
         return (
-          <>
+          <div key={index}>
             <div className="couponItem">
               <div className="couponItem__head">
                 <h3 className="couponItem__head--title">
@@ -48,17 +49,17 @@ function Discount() {
               <h3 className="couponInfo__title--header">
                 NHẬP MÃ: {discount.code}
               </h3>
-              <h3 className="couponInfo__title--center">
-                Mã khuyến mãi: {discount.code}
-              </h3>
-              - {discount.content}
-              <br />- Mã khuyễn mãi không áp dụng với các sản phẩm collab.{" "}
+              <div className="couponInfo__title--center">
+                <h3>Mã khuyến mãi: {discount.code}</h3>- {discount.content}
+                <br />- Mã khuyễn mãi không áp dụng với các sản phẩm collab.{" "}
+              </div>
+
               <div className="couponInfo__btn">
                 <button onClick={() => setIsOpen(false)}>Đóng</button>
                 <button onClick={copyText(discount.code)}>Sao chép mã </button>
               </div>
             </Modal>
-          </>
+          </div>
         );
       })}
     </div>

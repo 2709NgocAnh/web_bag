@@ -7,6 +7,12 @@ export const apiProduct = {
   getListProduct: (pageIndex) => {
     return `product?pageSize=12&pageIndex=${pageIndex}`;
   },
+  getAProduct: (id) => {
+    return `product/${id}`;
+  },
+  getProductByCategoryId: (id) => {
+    return `product/listProductByCategoryId/${id}`;
+  },
 };
 
 export const getListProduct = async (pageIndex) => {
@@ -21,6 +27,15 @@ export const getListProduct = async (pageIndex) => {
 export const getListHomeProduct = async () => {
   try {
     const res = await httpRequest.get(apiProduct.getListHomeProduct);
+    return res;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAProduct = async (id) => {
+  try {
+    const res = await httpRequest.get(apiProduct.getAProduct(id));
     return res;
   } catch (error) {
     console.log(error);
@@ -73,9 +88,9 @@ export const searchProduct = async (search) => {
     console.log(error);
   }
 };
-export const searchProductByCategoryId = async (id) => {
+export const getProductByCategoryId = async (id) => {
   try {
-    const res = await httpRequest.get(`/searchProductByCategoryId/${id}`);
+    const res = await httpRequest.get(apiProduct.getProductByCategoryId(id));
     return res;
   } catch (error) {
     console.log(error);
@@ -141,14 +156,6 @@ export const editProduct = async (
       active,
       imgList,
     });
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
-};
-export const getAProduct = async (id) => {
-  try {
-    const res = await httpRequest.get(`product/${id}`);
     return res;
   } catch (error) {
     console.log(error);

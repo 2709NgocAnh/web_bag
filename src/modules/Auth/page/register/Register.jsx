@@ -1,26 +1,17 @@
 import classNames from "classnames/bind";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import "yup-phone-lite";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { signUpRegister } from "~/redux/slice/auth/AuthSlice";
 import { MENU_REGISTER } from "../../component/constant";
 import FormRegister from "../../component/FormRegister/FormRegister";
 import styles from "./Register.module.scss";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 export default function Register() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const isSuccess = useSelector((state) => state.auth.isSuccess);
-  //   console.log(isSuccess);
-  //   if (isSuccess === true) {
-  //     Swal.fire("Vui lòng Kiểm tra email để lấy mã xác nhận");
-  //     navigate("/veryfyEmail");
-  //   }
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -36,6 +27,11 @@ export default function Register() {
     },
     onSubmit: async (values, actions) => {
       await dispatch(signUpRegister(values));
+
+      // isSuccess === true
+      //   ? Swal.fire("Vui lòng Kiểm tra email để lấy mã xác nhận") &&
+      //     navigate("/veryfyEmail")
+      //   : navigate("/user/register");
 
       //   actions.resetForm();
     },

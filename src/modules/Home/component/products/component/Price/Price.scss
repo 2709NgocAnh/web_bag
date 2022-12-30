@@ -18,3 +18,14 @@
     color: darkgrey;
   }
 }
+@media (max-width: 650px) {
+  .price {
+    &__noSale {
+      font-size: 1.2rem;
+      margin-top: 0;
+    }
+    &__sale {
+      display: none;
+    }
+  }
+}

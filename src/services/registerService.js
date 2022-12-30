@@ -11,7 +11,6 @@ export const signUpRegister = async ({
   role = "user",
 }) => {
   try {
-    console.log("abcxyz");
     const res = await httpRequest.post(`auth/signUp`, {
       fullName,
       email,
@@ -22,7 +21,6 @@ export const signUpRegister = async ({
     });
     return res.data;
   } catch (error) {
-    console.log(error.response);
     Swal.fire({
       icon: "error",
       text: `${error.response.data.message} 🙌👀`,

@@ -1,12 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import * as registerService from "../../../services/registerService";
+
 export const signUpRegister = createAsyncThunk(
   "user/signUpRegister",
   async (user) => {
     try {
       const response = await registerService.signUpRegister(user);
+      if (response.success === true) {
+        Swal.fire("Vui lòng Kiểm tra email để lấy mã xác nhận");
+      }
       return response.success;
     } catch (e) {
       console.log(e);

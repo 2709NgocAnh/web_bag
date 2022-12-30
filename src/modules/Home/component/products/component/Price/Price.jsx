@@ -8,7 +8,17 @@ export function FormatNumber({ price }) {
   });
 }
 
-export default function Price(props) {
+export function Price(props) {
+  const { price, price_sale } = props;
+
+  return price_sale > 0 ? (
+    <FormatNumber price={price_sale} />
+  ) : (
+    <FormatNumber price={price} />
+  );
+}
+
+export default function AllPrice(props) {
   const { price, price_sale } = props;
 
   return (

@@ -5,6 +5,7 @@ const routeClient = {
   allProductSale: "/product/sale",
   allProductNew: "/product/new",
 
+  detailProduct: "/product/:id",
   payment: "/payment",
   cart: "/cart",
 
@@ -26,6 +27,8 @@ const routeClient = {
   userRegister: "/user/register",
   userForgetPassword: "/user/forgetPassword",
   userVerifyEmail: "/user/verifyEmail",
+
+  pageNotFound: "*",
 };
 
 export default routeClient;
